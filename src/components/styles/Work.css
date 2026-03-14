@@ -112,6 +112,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+    width: 100%;
+    max-width: 500px;
+    min-width: 0;
+    margin: 0 auto;
 }
 
 /* ── Navigation Arrows ── */
@@ -229,9 +233,12 @@
 
 .work-image img {
   width: 100%;
-  height: 300px;
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
   object-fit: cover;
   border-radius: 8px;
+  display: block;
 }
 
 /* ── Responsive ── */
@@ -327,6 +334,28 @@
   }
 
   .work-image img {
-    max-height: 250px;
+    max-height: 200px;
+    height: auto;
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .carousel-image-wrapper {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  .work-image img {
+    max-height: 120px;
+    height: auto;
+    border-radius: 6px;
+  }
+  .carousel-content {
+    gap: 10px;
+    flex-direction: column;
+  }
+  .carousel-info {
+    width: 100%;
+    gap: 10px;
+  }
+}
 }
