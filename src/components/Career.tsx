@@ -34,9 +34,10 @@ const Career = () => {
               <h3>NOW</h3>
             </div>
             <p>
-              Led two development teams on Mpro, a large-scale insurance
-              operations platform. Developed multiple modules using React.js &
-              migrated critical functionalities to Node.js microservices.
+              Developed a modern leads generation platform which help business
+              to get the desired leads. Developed multiple modules using
+              React.js & migrated critical functionalities to Node.js
+              microservices.
             </p>
           </div>
         </div>
