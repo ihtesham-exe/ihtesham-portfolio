@@ -1,3 +1,48 @@
+@media screen and (max-width: 600px) {
+  .landing-h2-1 {
+    font-size: 0.7em !important;
+    padding: 2px 6px;
+    background: none !important;
+    border-radius: 16px;
+    backdrop-filter: none;
+    position: relative;
+    z-index: 2;
+    box-shadow: none;
+  }
+  .landing-h2-1::before {
+    display: none;
+  }
+}
+
+.landing-info-h2::after {
+  display: none !important;
+}
+
+@media screen and (max-width: 900px) {
+  .landing-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 16px;
+    position: static;
+    text-align: center;
+  }
+  .landing-intro h2,
+  .landing-intro h1 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .landing-intro h1 span {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 .landing-section {
   width: 100%;
   max-width: var(--cMaxWidth);
@@ -33,9 +78,11 @@
   top: 0;
   width: 100%;
   height: 130px;
-  background-image: linear-gradient(0deg,
-      transparent,
-      var(--backgroundColor) 70%);
+  background-image: linear-gradient(
+    0deg,
+    transparent,
+    var(--backgroundColor) 70%
+  );
   pointer-events: none;
   z-index: 12;
   opacity: 0;
@@ -124,9 +171,11 @@
   content: "";
   width: 100vw;
   height: 250px;
-  background-image: linear-gradient(to bottom,
-      transparent,
-      var(--backgroundColor) 70%);
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--backgroundColor) 70%
+  );
   bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
@@ -257,11 +306,13 @@ h2.landing-info-h2 {
   content: "";
   position: absolute;
   width: 100%;
-  height: 120%;
+  height: 190%;
   z-index: 3;
-  background-image: linear-gradient(0deg,
-      var(--backgroundColor) 40%,
-      rgba(0, 0, 0, 0) 110%);
+  background-image: linear-gradient(
+    0deg,
+    var(--backgroundColor) 40%,
+    rgba(0, 0, 0, 0) 110%
+  );
   top: 0;
   left: 0;
 }
