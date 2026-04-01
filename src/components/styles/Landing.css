@@ -9,9 +9,6 @@
     z-index: 2;
     box-shadow: none;
   }
-  .landing-h2-1::before {
-    display: none;
-  }
 }
 
 .landing-info-h2::after {
@@ -261,6 +258,7 @@
   font-weight: 300;
   color: var(--accentColor);
   margin: 0;
+  animation: landingTextFloat 3s ease-in-out infinite;
 }
 
 .landing-info h2 {
@@ -276,12 +274,8 @@
   flex-wrap: nowrap;
   text-transform: uppercase;
   letter-spacing: 2px;
-  overflow: hidden;
-}
-
-.landing-h2-info-1 {
-  position: absolute;
-  top: 0;
+  animation: landingTextFloat 3s ease-in-out infinite;
+  animation-delay: 0.15s;
 }
 
 h2.landing-info-h2 {
@@ -294,7 +288,23 @@ h2.landing-info-h2 {
   font-weight: 600;
   position: relative;
   margin-left: -5px;
-  overflow: hidden;
+  animation: landingTextFloat 3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes landingTextFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.landing-h2-info-1 {
+  position: absolute;
+  top: 0;
 }
 
 .landing-h2-2 {

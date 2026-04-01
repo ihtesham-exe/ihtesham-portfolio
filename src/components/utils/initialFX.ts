@@ -20,7 +20,7 @@ export function initialFX() {
       y: 0,
       stagger: 0.025,
       delay: 0.3,
-    }
+    },
   );
 
   gsap.fromTo(
@@ -34,7 +34,7 @@ export function initialFX() {
       y: 0,
       stagger: 0.025,
       delay: 0.3,
-    }
+    },
   );
 
   gsap.fromTo(
@@ -46,7 +46,7 @@ export function initialFX() {
       ease: "power1.inOut",
       y: 0,
       delay: 0.8,
-    }
+    },
   );
   gsap.fromTo(
     [".header", ".icons-section", ".nav-fade"],
@@ -56,60 +56,6 @@ export function initialFX() {
       duration: 1.2,
       ease: "power1.inOut",
       delay: 0.1,
-    }
-  );
-
-  LoopText(".landing-h2-info", ".landing-h2-info-1");
-  LoopText(".landing-h2-1", ".landing-h2-2");
-}
-
-function LoopText(selector1: string, selector2: string) {
-  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-  const delay = 4;
-  const delay2 = delay * 2 + 1;
-
-  tl.fromTo(
-    selector2,
-    { opacity: 0, y: 80 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power3.inOut",
-      y: 0,
-      delay: delay,
     },
-    0
-  )
-    .fromTo(
-      selector1,
-      { y: 80 },
-      {
-        duration: 1.2,
-        ease: "power3.inOut",
-        y: 0,
-        delay: delay2,
-      },
-      1
-    )
-    .fromTo(
-      selector1,
-      { y: 0 },
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        delay: delay,
-      },
-      0
-    )
-    .to(
-      selector2,
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        delay: delay2,
-      },
-      1
-    );
+  );
 }

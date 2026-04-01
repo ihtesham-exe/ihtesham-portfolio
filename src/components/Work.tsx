@@ -1,6 +1,5 @@
-import { useState, useCallback } from "react";
+﻿import { useState, useCallback } from "react";
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
@@ -19,7 +18,7 @@ const projects = [
   {
     title: "Solid Starters",
     category: "Low-Code Platform",
-    tools: "Next.js, Tailwind CSS, Shadcn UI,",
+    tools: "Next.js, Tailwind CSS, Shadcn UI",
     image: "/images/Solidx.png",
   },
   {
@@ -28,7 +27,6 @@ const projects = [
     tools: "Next.js, Tailwind CSS, Shadcn UI",
     image: "/images/radix.png",
   },
-
   {
     title: "Sapphire",
     category: "CRM Platform",
@@ -69,6 +67,23 @@ const Work = () => {
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
+  const getFanClass = (index: number): string => {
+    const total = projects.length;
+    let diff = index - currentIndex;
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
+    const map: Record<number, string> = {
+      [-2]: "work-fan-card fan-left-2",
+      [-1]: "work-fan-card fan-left-1",
+      [0]: "work-fan-card fan-center",
+      [1]: "work-fan-card fan-right-1",
+      [2]: "work-fan-card fan-right-2",
+    };
+    return map[diff] ?? "work-fan-card fan-hidden";
+  };
+
+  const current = projects[currentIndex];
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -76,55 +91,49 @@ const Work = () => {
           My <span>Work</span>
         </h2>
 
-        <div className="carousel-wrapper">
-          {/* Navigation Arrows */}
-          <button
-            className="carousel-arrow carousel-arrow-left"
-            onClick={goToPrev}
-            aria-label="Previous project"
-            data-cursor="disable"
-          >
-            <MdArrowBack />
-          </button>
-          <button
-            className="carousel-arrow carousel-arrow-right"
-            onClick={goToNext}
-            aria-label="Next project"
-            data-cursor="disable"
-          >
-            <MdArrowForward />
-          </button>
-
-          {/* Slides */}
-          <div className="carousel-track-container">
-            <div
-              className="carousel-track"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-              }}
+        <div className="work-fan-wrapper">
+          {/* Fan Stage */}
+          <div className="work-fan-stage">
+            <button
+              className="carousel-arrow carousel-arrow-left"
+              onClick={goToPrev}
+              aria-label="Previous project"
+              data-cursor="disable"
             >
-              {projects.map((project, index) => (
-                <div className="carousel-slide" key={index}>
-                  <div className="carousel-content">
-                    <div className="carousel-info">
-                      <div className="carousel-number">
-                        <h3>0{index + 1}</h3>
-                      </div>
-                      <div className="carousel-details">
-                        <h4>{project.title}</h4>
-                        <p className="carousel-category">{project.category}</p>
-                        <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
-                          <p>{project.tools}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="carousel-image-wrapper">
-                      <WorkImage image={project.image} alt={project.title} />
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <MdArrowBack />
+            </button>
+            <button
+              className="carousel-arrow carousel-arrow-right"
+              onClick={goToNext}
+              aria-label="Next project"
+              data-cursor="disable"
+            >
+              <MdArrowForward />
+            </button>
+
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className={getFanClass(index)}
+                onClick={() => index !== currentIndex && goToSlide(index)}
+              >
+                <img src={project.image} alt={project.title} />
+              </div>
+            ))}
+          </div>
+
+          {/* Project Info */}
+          <div className="work-fan-info" key={currentIndex}>
+            <div className="work-fan-number">
+              <h3>0{currentIndex + 1}</h3>
+            </div>
+            <div className="work-fan-details">
+              <h4>{current.title}</h4>
+              <p className="work-fan-category">{current.category}</p>
+              <div className="work-fan-tools">
+                <span className="tools-label">Tools & Features</span>
+                <p>{current.tools}</p>
+              </div>
             </div>
           </div>
 

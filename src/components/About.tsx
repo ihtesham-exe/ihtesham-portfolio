@@ -10,10 +10,10 @@ const About = () => {
           with over a year of experience building modern web applications. I
           worked with Ashtra AI Inc., a U.S based AI company, where I help
           develop and scale a production AI platform using React.js and Next.js
-          — adopted by 100+ clients shortly after launch. Prior to that, I
-          worked as a self-employed web developer for a year, delivering
+          adopted by 100+ clients shortly after launch. Prior to that, I worked
+          as a self-employed web developer for a year, delivering
           high-performance, SEO-optimized websites and SPAs for clients across
-          e-commerce, education, and tech startups — handling everything from
+          e-commerce, education, and tech startups handling everything from
           requirements gathering to final deployment. I'm passionate about
           writing clean, scalable code and crafting seamless user experiences
           that make a real impact.

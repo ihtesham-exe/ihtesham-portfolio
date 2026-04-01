@@ -1,4 +1,4 @@
-/* ── Work Section ── */
+﻿/* ── Work Section ── */
 .work-section {
   position: relative;
   z-index: 1;
@@ -10,7 +10,8 @@
   font-size: 70px;
   font-weight: 500;
   margin-top: 0;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  text-align: center;
 }
 
 .work-section h2 > span {
@@ -21,78 +22,139 @@
   margin: auto;
 }
 
-/* ── Carousel ── */
-.carousel-wrapper {
+/* ── Fan Layout ── */
+.work-fan-wrapper {
+  width: 100%;
+}
+
+.work-fan-stage {
   position: relative;
-  width: 100%;
-}
-
-.carousel-track-container {
-  overflow: hidden;
-  width: 100%;
-  border-top: 1px solid #363636;
-  border-bottom: 1px solid #363636;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  padding: 50px 0;
-}
-
-.carousel-content {
+  height: 300px;
   display: flex;
   align-items: center;
-  gap: 60px;
+  justify-content: center;
+  margin-bottom: 50px;
+  overflow: visible;
+}
+
+/* ── Fan Cards ── */
+.work-fan-card {
+  position: absolute;
+  width: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.work-fan-card img {
   width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
 }
 
-.carousel-info {
-  flex: 1;
+.work-fan-card.fan-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0) rotate(0deg) scale(0.4);
+  z-index: 0;
+}
+
+.work-fan-card.fan-center {
+  transform: translateX(0) rotate(0deg) scale(1);
+  opacity: 1;
+  z-index: 6;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  cursor: default;
+}
+
+.work-fan-card.fan-left-1 {
+  transform: translateX(-270px) rotate(-12deg) scale(0.86);
+  opacity: 0.85;
+  z-index: 4;
+}
+
+.work-fan-card.fan-right-1 {
+  transform: translateX(270px) rotate(12deg) scale(0.86);
+  opacity: 0.85;
+  z-index: 4;
+}
+
+.work-fan-card.fan-left-2 {
+  transform: translateX(-470px) rotate(-22deg) scale(0.74);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.work-fan-card.fan-right-2 {
+  transform: translateX(470px) rotate(22deg) scale(0.74);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+/* ── Project Info ── */
+.work-fan-info {
   display: flex;
-  gap: 30px;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 28px 0;
+  border-bottom: 1px solid #363636;
+  animation: fanInfoFade 0.35s ease forwards;
+  text-align: center;
 }
 
-.carousel-number h3 {
-  font-size: 60px;
+@keyframes fanInfoFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.work-fan-number h3 {
+  font-size: 56px;
   line-height: 1;
   margin: 0;
   font-weight: 600;
   opacity: 0.3;
 }
 
-.carousel-details {
+.work-fan-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  align-items: center;
 }
 
-.carousel-details h4 {
+.work-fan-details h4 {
   font-size: 28px;
   font-weight: 500;
   margin: 0;
 }
 
-.carousel-category {
+.work-fan-category {
   font-weight: 200;
   color: #adacac;
   margin: 0;
   font-size: 16px;
 }
 
-.carousel-tools {
-  margin-top: 16px;
+.work-fan-tools {
+  margin-top: 12px;
 }
 
-.carousel-tools .tools-label {
+.work-fan-tools .tools-label {
   font-size: 14px;
   font-weight: 400;
   opacity: 0.6;
@@ -100,22 +162,11 @@
   letter-spacing: 1px;
 }
 
-.carousel-tools p {
+.work-fan-tools p {
   font-weight: 200;
   color: #adacac;
   margin: 6px 0 0;
   font-size: 15px;
-}
-
-.carousel-image-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  min-width: 0;
-  margin: 0 auto;
 }
 
 /* ── Navigation Arrows ── */
@@ -149,7 +200,6 @@
 .carousel-arrow-left {
   left: -70px;
 }
-
 .carousel-arrow-right {
   right: -70px;
 }
@@ -184,127 +234,30 @@
   box-shadow: 0 0 8px rgba(94, 234, 212, 0.4);
 }
 
-/* ── Work Image (reused) ── */
-.work-image {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.work-image-in {
-  position: relative;
-}
-
-.work-link {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: var(--backgroundColor);
-  width: 50px;
-  border-radius: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
-  box-shadow:
-    0px 0px 10px 0px rgba(255, 255, 255, 0.5),
-    inset 0px 0px 10px 0px #393939;
-  transition: 0.3s;
-  opacity: 0;
-}
-
-.work-image a:hover {
-  color: inherit;
-}
-
-.work-image a:hover .work-link {
-  opacity: 1;
-}
-
-.work-image video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #000;
-  object-fit: cover;
-}
-
-.work-image img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-}
-
 /* ── Responsive ── */
-@media only screen and (max-width: 1600px) {
-  .carousel-arrow-left {
-    left: -60px;
-  }
-
-  .carousel-arrow-right {
-    right: -60px;
-  }
-}
-
 @media only screen and (max-width: 1400px) {
   .work-section h2 {
     font-size: 50px;
   }
-
-  .carousel-details h4 {
-    font-size: 22px;
-  }
-
-  .carousel-number h3 {
-    font-size: 45px;
-  }
-
-  .carousel-content {
-    gap: 40px;
-  }
-
   .carousel-arrow-left {
     left: 10px;
   }
-
   .carousel-arrow-right {
     right: 10px;
   }
 }
 
-@media only screen and (max-width: 1025px) {
-  .carousel-content {
-    flex-direction: column;
-    gap: 30px;
+@media only screen and (max-width: 1100px) {
+  .work-fan-card.fan-left-2,
+  .work-fan-card.fan-right-2 {
+    display: none;
   }
 
-  .carousel-info {
-    width: 100%;
+  .work-fan-card.fan-left-1 {
+    transform: translateX(-200px) rotate(-11deg) scale(0.85);
   }
-
-  .carousel-image-wrapper {
-    width: 100%;
-  }
-
-  .carousel-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-
-  .carousel-arrow-left {
-    left: 10px;
-  }
-
-  .carousel-arrow-right {
-    right: 10px;
+  .work-fan-card.fan-right-1 {
+    transform: translateX(200px) rotate(11deg) scale(0.85);
   }
 }
 
@@ -312,50 +265,101 @@
   .work-section {
     padding: 50px 0;
   }
-
   .work-section h2 {
     font-size: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
-
-  .carousel-number h3 {
-    font-size: 35px;
+  .work-fan-stage {
+    height: 260px;
+    margin-bottom: 40px;
   }
-
-  .carousel-details h4 {
-    font-size: 20px;
+  .work-fan-card {
+    width: 280px;
   }
-
-  .carousel-content {
-    gap: 20px;
+  .work-fan-card img {
+    height: 200px;
   }
-
-  .carousel-slide {
-    padding: 30px 0;
+  .work-fan-card.fan-left-1 {
+    transform: translateX(-160px) rotate(-10deg) scale(0.84);
   }
-
-  .work-image img {
-    max-height: 200px;
-    height: auto;
+  .work-fan-card.fan-right-1 {
+    transform: translateX(160px) rotate(10deg) scale(0.84);
+  }
+  .work-fan-number h3 {
+    font-size: 40px;
+  }
+  .work-fan-details h4 {
+    font-size: 22px;
+  }
+  .work-fan-category {
+    font-size: 14px;
+  }
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .carousel-image-wrapper {
-    max-width: 100%;
-    padding: 0 10px;
+  .work-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
   }
-  .work-image img {
-    max-height: 120px;
-    height: auto;
-    border-radius: 6px;
+  .work-fan-card.fan-left-1 {
+    transform: translateX(-110%) rotate(0deg) scale(1);
+    opacity: 0;
   }
-  .carousel-content {
-    gap: 10px;
-    flex-direction: column;
+  .work-fan-card.fan-right-1 {
+    transform: translateX(110%) rotate(0deg) scale(1);
+    opacity: 0;
   }
-  .carousel-info {
-    width: 100%;
-    gap: 10px;
+  .work-fan-card {
+    width: min(85vw, 300px);
+  }
+  .work-fan-card img {
+    height: 180px;
+  }
+  .work-fan-stage {
+    height: 220px;
+    margin-bottom: 30px;
+  }
+  .work-fan-number h3 {
+    font-size: 30px;
+  }
+  .work-fan-details h4 {
+    font-size: 18px;
+  }
+  .work-fan-category {
+    font-size: 13px;
+  }
+  .work-fan-tools .tools-label {
+    font-size: 11px;
+  }
+  .work-fan-tools p {
+    font-size: 12px;
+  }
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .carousel-arrow-left {
+    left: 4px;
+  }
+  .carousel-arrow-right {
+    right: 4px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .work-section h2 {
+    font-size: 26px;
+  }
+  .work-fan-details h4 {
+    font-size: 15px;
+  }
+  .work-fan-number h3 {
+    font-size: 24px;
   }
 }
